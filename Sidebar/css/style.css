@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+html, body{
+    height: 100%;
+    background-color: #222;
+}
+
+.sidebar{
+    width: 240px;
+    height: 100%;
+    background-color: #111;
+    color: #fff;
+    border-radius: 0px 15px 15px 0px;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: width 0.3s ease;
+
+    .header{
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        font-weight: 600;
+        .headerIcon{
+            width: 30px;
+        }
+        .toggle{
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            position: absolute;
+            left: 100%;
+            translate: -50%;
+
+            svg{
+                rotate: 180deg;
+            }
+        }
+        .hide{
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s;
+        }
+    }
+
+    .sidebar-nav{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        margin-top: 15px;
+        a{
+            display: flex;
+            height: 30px;
+            width: 100%;
+            color: #fff;
+            border-radius: 5px;
+            align-items: center;
+
+            &:hover{
+                background-color: rgba(255,255,255,0.1);
+            }
+        }
+        .icon{
+            height: 30px;
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            justify-content: center;
+            position: relative;
+            gap: 6px;
+
+            &::before{
+                content: attr(title);
+                position: absolute;
+                background-color: #111;
+                padding: 2px 4px;
+                border-radius: 5px;
+                left: 38px;
+                translate: -0%;
+                visibility: hidden;
+                opacity: 0;
+            }
+            svg{
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+
+    .user{
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .name{
+          font-size: 14px;
+        }
+
+        .email{
+            font-size: 12px;
+        }
+    }
+
+}
+
+#openSidebar:checked ~ .sidebar{
+    width: 62px;
+    .toggle svg{
+        rotate: 0deg;
+    }
+    .hide{
+        opacity: 0;
+        visibility: hidden;
+    }
+    .sidebar-nav .icon:hover::before{
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(8px);
+        transition: opacity 0.3s, transform 0.3s;
+    }
+}
